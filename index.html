@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Gestión Hospitalaria</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+
+    h1 {
+      color: #2c3e50;
+    }
+
+    #toggle-menu {
+      padding: 8px 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    #toggle-menu:hover {
+      background-color: #218838;
+    }
+
+    nav {
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .form-section {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #f9f9f9;
+    }
+
+    form {
+      margin-top: 10px;
+    }
+
+    input {
+      margin-bottom: 10px;
+      width: 300px;
+      padding: 8px;
+      display: block;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin-right: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      margin-top: 10px;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏥 Sistema de Gestión Hospitalaria</h1>
+
+  <button id="toggle-menu" onclick="toggleMenu()">☰</button>
+
+  <nav id="menu">
+    <a href="#" onclick="mostrarFormulario('registro')">Registrar Paciente</a>
+    <a href="#" onclick="mostrarFormulario('consulta')">Consultar Paciente</a>
+    <a href="#" onclick="mostrarFormulario('modificacion')">Modificar Paciente</a>
+    <a href="#" onclick="mostrarFormulario('listado')">Listar Pacientes</a>
+    <a href="#" onclick="mostrarFormulario('baja')">Eliminar Paciente</a>
+  </nav>
+
+  <!-- Formularios -->
+  <div id="form-registro" class="form-section">
+    <h2>Registrar Paciente</h2>
+    <form>
+      <input type="text" placeholder="Nombre" required>
+      <input type="text" placeholder="Apellido" required>
+      <input type="text" placeholder="DNI" required>
+      <input type="email" placeholder="Email" required>
+      <button type="submit">Aceptar</button>
+      <button type="reset">Cancelar</button>
+    </form>
+  </div>
+
+  <div id="form-consulta" class="form-section">
+    <h2>Consultar Paciente</h2>
+    <form>
+      <input type="text" placeholder="Nombre">
+      <input type="text" placeholder="Apellido">
+      <input type="text" placeholder="DNI">
+      <input type="email" placeholder="Email">
+      <button type="submit">Aceptar</button>
+      <button type="reset">Cancelar</button>
+    </form>
+  </div>
+
+  <div id="form-modificacion" class="form-section">
+    <h2>Modificar Paciente</h2>
+    <form>
+      <input type="text" placeholder="Nuevo Nombre">
+      <input type="text" placeholder="Nuevo Apellido">
+      <input type="text" placeholder="Nuevo DNI">
+      <input type="email" placeholder="Nuevo Email">
+      <button type="submit">Aceptar</button>
+      <button type="reset">Cancelar</button>
+    </form>
+  </div>
+
+  <div id="form-listado" class="form-section">
+    <h2>Listado de Pacientes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>DNI</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ejemplo</td>
+          <td>Paciente</td>
+          <td>12345678</td>
+          <td>ejemplo@mail.com</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <button onclick="ocultarTodo()">Cerrar</button>
+  </div>
+
+  <div id="form-baja" class="form-section">
+    <h2>Eliminar Paciente</h2>
+    <form>
+      <input type="text" placeholder="DNI del paciente a eliminar" required>
+      <button type="submit">Aceptar</button>
+      <button type="reset">Cancelar</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function ocultarTodo() {
+      const secciones = document.querySelectorAll('.form-section');
+      secciones.forEach(sec => sec.style.display = 'none');
+    }
+
+    function mostrarFormulario(id) {
+      ocultarTodo();
+      document.getElementById('form-' + id).style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
